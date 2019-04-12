@@ -8,36 +8,39 @@ import { map } from 'rxjs/operators';
 export class SpotifyService {
 
   constructor( private http: HttpClient ) {
+
     console.log('Spotify Service Listo!');
+
+  }
+
+  getQuey( query: string ) {
+
+    const url = `https://api.spotify.com/v1/${ query }`;
+
+    const headers = new HttpHeaders( {
+
+      Authorization: 'Bearer BQDFYkICw7srfaie8mXQvt_rEF3zHPTHQmLQPwth0rxL-0HgJKYbsrdLVWBgLpg4uoB_US7KD8dJ_7CTCnI'
+
+     } );
+
+    return this.http.get(url, { headers });
 
   }
 
   getNewReleases() {
 
-    const headers = new HttpHeaders( {
-
-        Authorization: 'Bearer BQA-Io4yWSiVGd3pPEhOtzEBpH8BV6dncR5Oui1XS0iztH0dzvA9ArA5dtZzRVBtX05rZ5OdMNcz1U22X5s'
-
-     } );
-
-    return this.http.get('https://api.spotify.com/v1/browse/new-releases?limit=20', { headers })
-                  .pipe( map( data => {
+    return this.getQuey('browse/new-releases?limit=20')
+                    .pipe( map( data => {
                       // tslint:disable-next-line: max-line-length
-                      return data['albums'].items; // Esto es válido pero tambien se puede hacer data.albums.items y en map poner ( data: any )
-                  } ) );
+                      return data['albums'].items;
+                    } ) );
 
   }
 
   getArtista( termino: string )  {
 
-    const headers = new HttpHeaders( {
-
-      Authorization: 'Bearer BQA-Io4yWSiVGd3pPEhOtzEBpH8BV6dncR5Oui1XS0iztH0dzvA9ArA5dtZzRVBtX05rZ5OdMNcz1U22X5s'
-
-     } );
-
-    return this.http.get(`https://api.spotify.com/v1/search?q=${ termino }&type=artist&limit=15`, { headers })
-                  .pipe( map( data => data['artists'].items ) ); // Si es una sola línea del return, se simplifica asi si se quiere
+    return this.getQuey(`search?q=${ termino }&type=artist&limit=15`)
+                    .pipe( map( data => data['artists'].items ) ); // Si es una sola línea del return, se simplifica asi si se quiere
 
   }
 
