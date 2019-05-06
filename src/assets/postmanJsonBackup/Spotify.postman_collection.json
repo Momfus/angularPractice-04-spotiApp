@@ -1,0 +1,95 @@
+{
+	"info": {
+		"_postman_id": "ef771ecc-37a0-204e-2673-635458822ced",
+		"name": "Spotify",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "https://accounts.spotify.com/api/token",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/x-www-form-urlencoded"
+					}
+				],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "grant_type",
+							"value": "client_credentials",
+							"type": "text"
+						},
+						{
+							"key": "client_id",
+							"value": "7fa6e428f0524725a99d3dfcd9071acf",
+							"type": "text"
+						},
+						{
+							"key": "client_secret",
+							"value": "196eb2058eca4bb9a57e84a93c6c75d6",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "https://accounts.spotify.com/api/token",
+					"protocol": "https",
+					"host": [
+						"accounts",
+						"spotify",
+						"com"
+					],
+					"path": [
+						"api",
+						"token"
+					]
+				},
+				"description": "Generar Token API de Spotify"
+			},
+			"response": []
+		},
+		{
+			"name": "\thttps://api.spotify.com/v1/browse/new-releases?Authorization",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer BQBHm6GpGHK307BorL1JX9TobCFUQtDfG8gEjHs1ED8eJ6_bTxqkKcDgKJBHjf9Tkc3VzjwQlcVWZK0jugU",
+						"equals": false
+					},
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/x-www-form-urlencoded",
+						"type": "text",
+						"disabled": true
+					}
+				],
+				"body": {},
+				"url": {
+					"raw": "https://api.spotify.com/v1/browse/new-releases",
+					"protocol": "https",
+					"host": [
+						"api",
+						"spotify",
+						"com"
+					],
+					"path": [
+						"v1",
+						"browse",
+						"new-releases"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

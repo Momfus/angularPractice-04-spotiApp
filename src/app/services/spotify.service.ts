@@ -19,7 +19,7 @@ export class SpotifyService {
 
     const headers = new HttpHeaders( {
 
-      Authorization: 'Bearer BQCKcBIFgf76QAYHYwMaglAZqfzsHKkM5amw9AYCpVUwOmhSRK9Rs83Z5Njf4YEqT5nV3UBbomaib3ftBFM'
+      Authorization: 'Bearer BQAuiFRxaKPbKConk9Kx5IFATAzAyivCuiHi2wOL5HCyAfCFPqbAoBdLj-YC4Mqv3bdh_-hzfPBrXofPVpM'
 
      } );
 
@@ -31,7 +31,6 @@ export class SpotifyService {
 
     return this.getQuey('browse/new-releases?limit=20')
                     .pipe( map( data => {
-                      // tslint:disable-next-line: max-line-length
                       return data['albums'].items;
                     } ) );
 
