@@ -20,7 +20,7 @@ export class SearchComponent{
       if ( termino !== '') {
 
 
-         this.spotify.getArtista( termino )
+         this.spotify.getArtistas( termino )
          .subscribe( (data: any) => {
 
             this.artistas = data;

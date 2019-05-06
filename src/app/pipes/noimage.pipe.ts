@@ -9,7 +9,7 @@ export class NoimagePipe implements PipeTransform {
 
     if ( !images ) {
 
-      return '.assets/img/noimage.png';
+      return '../../assets/img/noimage.png';
 
     }
 
@@ -18,7 +18,7 @@ export class NoimagePipe implements PipeTransform {
       return images[0].url;
 
     } else {
-       return 'assets/img/noimage.png';
+       return '../../assets/img/noimage.png';
     }
 
     return null;
